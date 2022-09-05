@@ -1,0 +1,41 @@
+<template>
+  <div id="checkbox">
+    <h1>Checkbox</h1>
+    <ul id="checkbox">
+      <li v-for="(name, index) in nameList" :key="name">
+        <Checkbox
+          v-model="checkedNames"
+          label="체크박스"
+          :name="name"
+          :index="index" />
+        <!--  v-model 을 통해 checkName() 이 실행되고 arr 변수가 checkedNames 에 들어감  -->
+      </li>
+    </ul>
+    <span>{{ checkedNames }}</span>
+  </div>
+</template>
+
+<script>
+import checkbox from '../components/checkbox.vue'
+
+export default {
+  data() {
+    return {
+      nameList: ['Jack','John','Mike'],
+      // label 은 보통 한글로 쓰이기 때문에(그거야 한국이니까...)
+      // 저렇게 문자열로만 적는 것이 아닌, 한글로 표기될 label 용 따로,
+      // 서버로 실제로 옮겨지는 데이터 value 값용 따로 설정해서 배열의
+      // 요소를 하나의 객체데이터로 만들어놓는 것이 좋다.
+      // nameList: [
+      //   {label: '잭', value: 'Jack'},
+      //   {label: '존', value: 'John'},
+      //   {label: '마이크', value: 'Mike'},
+      // ],
+      checkedNames: []
+    }
+  },
+  component: {
+    checkbox
+  }
+}
+</script>
