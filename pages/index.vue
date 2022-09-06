@@ -1,6 +1,7 @@
 <template>
   <div id="checkbox">
     <h1>Checkbox</h1>
+    <checkboxAll v-model="checkedNames" label="전체 선택" :name-list="nameList" />
     <ul id="checkbox">
       <li v-for="(name, index) in nameList" :key="name">
         <Checkbox
@@ -17,6 +18,7 @@
 
 <script>
 import checkbox from '../components/checkbox.vue'
+import checkboxAll from '../components/checkboxAll'
 
 export default {
   data() {
@@ -35,7 +37,8 @@ export default {
     }
   },
   component: {
-    checkbox
+    checkbox,
+    checkboxAll
   }
 }
 </script>
