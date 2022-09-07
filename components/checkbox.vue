@@ -7,8 +7,9 @@
       type="checkbox"
       :value="name"
       @change="checkName" />
-<!--    change :input 에 변화가 있을 때마다 이벤트가 실행-->
-<!--  true 나 false 를 반환해서 class 유무로 디자인된 input 체크욈을 표현 -->
+<!--    change 이벤트: input 요소에 변화가 있을 때마다 이벤트가 실행 (type="text" 는 제외) -->
+<!--    checked: 1. true 나 false 를 반환해서 class 유무로 디자인된 input 체크욈을 표현/
+                 2. 데이터의 상태와 실제 checked 상태를 연결-->
 <!--    <em></em>{{ checkedNames.some(e => e === name) }}-->
 <!--    checkedNames.some(e => e === name) : boolean 반환, class 유무가 정해짐-->
     <em></em>
@@ -47,6 +48,8 @@ export default {
   computed: {
     isChecked() {
       return this.checkedNames.includes(this.name)
+      // 데이터 상태와 실제 checked 상태를 연결
+      // (checkedNames 배열에 Jack 이 사라지면 checked 도 false 가 됨)
     }
   },
   methods: {

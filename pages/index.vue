@@ -13,12 +13,25 @@
       </li>
     </ul>
     <span>{{ checkedNames }}</span>
+
+    <h1>Radio</h1>
+    <ul id="radio">
+      <li v-for="fruit in fruitList" :key="fruit">
+        <Radio
+          v-model="pickedFruit"
+          label="라디오"
+          :fruit="fruit"
+        />
+      </li>
+    </ul>
+    <span style="display: inline-block; margin-top: 10px;">pickedFruit: {{ pickedFruit }}</span>
   </div>
 </template>
 
 <script>
 import checkbox from '../components/checkbox.vue'
 import checkboxAll from '../components/checkboxAll'
+import radio from '../components/radio'
 
 export default {
   data() {
@@ -33,12 +46,15 @@ export default {
       //   {label: '존', value: 'John'},
       //   {label: '마이크', value: 'Mike'},
       // ],
-      checkedNames: []
+      checkedNames: [],
+      fruitList: ['apple', 'banana', 'cherry'],
+      pickedFruit: '',
     }
   },
   component: {
     checkbox,
-    checkboxAll
+    checkboxAll,
+    radio,
   }
 }
 </script>
