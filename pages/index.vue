@@ -1,30 +1,39 @@
 <template>
-  <div id="checkbox">
-    <h1>Checkbox</h1>
-    <checkboxAll v-model="checkedNames" label="전체 선택" :name-list="nameList" />
-    <ul id="checkbox">
-      <li v-for="(name, index) in nameList" :key="name">
-        <Checkbox
-          v-model="checkedNames"
-          label="체크박스"
-          :name="name"
-          :index="index" />
-        <!--  v-model 을 통해 checkName() 이 실행되고 arr 변수가 checkedNames 에 들어감  -->
-      </li>
-    </ul>
-    <span>{{ checkedNames }}</span>
+  <div>
+<!--    체크박스 / 라디오 -->
+    <div id="checkbox">
+      <h1>Checkbox</h1>
+      <checkboxAll v-model="checkedNames" label="전체 선택" :name-list="nameList" />
+      <ul id="checkbox">
+        <li v-for="(name, index) in nameList" :key="name">
+          <Checkbox
+            v-model="checkedNames"
+            label="체크박스"
+            :name="name"
+            :index="index" />
+          <!--  v-model 을 통해 checkName() 이 실행되고 arr 변수가 checkedNames 에 들어감  -->
+        </li>
+      </ul>
+      <span>{{ checkedNames }}</span>
 
-    <h1>Radio</h1>
-    <ul id="radio">
-      <li v-for="fruit in fruitList" :key="fruit">
-        <Radio
-          v-model="pickedFruit"
-          label="라디오"
-          :fruit="fruit"
-        />
-      </li>
-    </ul>
-    <span style="display: inline-block; margin-top: 10px;">pickedFruit: {{ pickedFruit }}</span>
+      <h1>Radio</h1>
+      <ul id="radio">
+        <li v-for="fruit in fruitList" :key="fruit">
+          <Radio
+            v-model="pickedFruit"
+            label="라디오"
+            :fruit="fruit"
+          />
+        </li>
+      </ul>
+      <span style="display: inline-block; margin-top: 10px;">pickedFruit: {{ pickedFruit }}</span>
+    </div>
+<!--    페이징 -->
+    <div id="pagination">
+      <h1>Pagination</h1>
+      <orderList />
+      <pagination />
+    </div>
   </div>
 </template>
 
@@ -32,6 +41,8 @@
 import checkbox from '../components/checkbox.vue'
 import checkboxAll from '../components/checkboxAll'
 import radio from '../components/radio'
+import pagination from '../components/pagination'
+import orderList from '../components/orderList'
 
 export default {
   data() {
@@ -49,12 +60,37 @@ export default {
       checkedNames: [],
       fruitList: ['apple', 'banana', 'cherry'],
       pickedFruit: '',
+      orderList: [
+        { name: '01Wolverine', universe: 'Marvel'},
+        { name: '02Batman', universe: 'DC' },
+        { name: '03Beast', universe: 'Marvel'},
+        { name: '04Superman', universe: 'DC' },
+        { name: '05Wonder Woman', universe: 'DC' },
+        { name: '06Iceman', universe: 'Marvel'},
+        { name: '07Black Panther', universe: 'Marvel'},
+        { name: '08Beast Boy', universe: 'DC' },
+        { name: '09Captain America', universe: 'Marvel'},
+        { name: '10Hawkgirl', universe: 'DC' },
+        { name: '12Cyclops', universe: 'Marvel'},
+        { name: '13Green Lantern', universe: 'DC' },
+        { name: '14Thor', universe: 'Marvel'},
+        { name: '15Flash', universe: 'DC' },
+        { name: '16Spider-man', universe: 'Marvel'},
+        { name: '17Martian Manhunter', universe: 'DC' },
+        { name: '18Nightwing', universe: 'DC' },
+        { name: '19Raven', universe: 'DC' },
+        { name: '20Hulk', universe: 'Marvel'},
+        { name: '21hehulk', universe: 'Marvel'}
+      ],
+      showList: [],
     }
   },
   component: {
     checkbox,
     checkboxAll,
     radio,
+    pagination,
+    orderList
   }
 }
 </script>

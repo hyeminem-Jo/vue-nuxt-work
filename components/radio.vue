@@ -1,8 +1,7 @@
 <template>
-  <label :for=fruit>
+  <label :for=fruit :class="{'active': isPicked}">
     <input
       :id="fruit"
-      :class="{'active': isPicked}"
       :checked="isPicked"
       name="favorate-fruit"
       type="radio"
@@ -30,7 +29,7 @@ export default {
     }
   },
   computed: {
-    isPicked(e) {
+    isPicked() {
       return this.pickedFruit === this.fruit
     }
   },
