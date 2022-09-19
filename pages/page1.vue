@@ -1,77 +1,55 @@
 <template>
   <div>
-    <!--    페이징 -->
     <div id="pagination">
       <h1>Pagination</h1>
-      <ul class="page-list">
-        <li v-for="list in showList" :key="list">
-          <span>{{ list.name }}</span>
-          <span>{{ list.universe }}</span>
-        </li>
-      </ul>
-<!--      <pagination />-->
-      <ul class="number-list" style="display: flex">
-        <li><button class="first pager">&#171;</button></li>
-        <li><button class="prev pager">&#60;</button></li>
-
-        <li v-for="(list, index) in showList" :key="index">
-          <button>{{ index + 1 }}</button>
-        </li>
-
-        <li><button class="next pager" @click="nextPage">&#62;</button></li>
-        <li><button class="last pager">&#187;</button></li>
-      </ul>
+      <pagination :orderList="orderList" />
     </div>
   </div>
 </template>
 
 <script>
-// import pagination from '../components/pagination'
+import pagination from '../components/pagination'
 
 export default {
   data() {
     return {
       orderList: [
-        { name: '01Wolverine', universe: 'Marvel'},
-        { name: '02Batman', universe: 'DC' },
-        { name: '03Beast', universe: 'Marvel'},
-        { name: '04Superman', universe: 'DC' },
-        { name: '05Wonder Woman', universe: 'DC' },
-        { name: '06Iceman', universe: 'Marvel'},
-        { name: '07Black Panther', universe: 'Marvel'},
-        { name: '08Beast Boy', universe: 'DC' },
-        { name: '09Captain America', universe: 'Marvel'},
-        { name: '10Hawkgirl', universe: 'DC' },
-        { name: '12Cyclops', universe: 'Marvel'},
-        { name: '13Green Lantern', universe: 'DC' },
-        { name: '14Thor', universe: 'Marvel'},
-        { name: '15Flash', universe: 'DC' },
-        { name: '16Spider-man', universe: 'Marvel'},
-        { name: '17Martian Manhunter', universe: 'DC' },
-        { name: '18Nightwing', universe: 'DC' },
-        { name: '19Raven', universe: 'DC' },
-        { name: '20Hulk', universe: 'Marvel'},
-        { name: '21hehulk', universe: 'Marvel'},
-        { name: '22heeseung', universe: 'DC'},
-        { name: '23hyejin', universe: 'Marvel'},
+        { name: '01-Wolverine', universe: 'Marvel'},
+        { name: '02-Batman', universe: 'DC' },
+        { name: '03-Beast', universe: 'Marvel'},
+        { name: '04-Superman', universe: 'DC' },
+        { name: '05-Wonder Woman', universe: 'DC' },
+        { name: '06-Iceman', universe: 'Marvel'},
+        { name: '07-Black Panther', universe: 'Marvel'},
+        { name: '08-Beast Boy', universe: 'DC' },
+        { name: '09-Captain America', universe: 'Marvel'},
+        { name: '10-Hawk girl', universe: 'DC' },
+        { name: '11-Flash', universe: 'DC' },
+        { name: '12-Cyclops', universe: 'Marvel'},
+        { name: '13-Green Lantern', universe: 'DC' },
+        { name: '14-Thor', universe: 'Marvel'},
+        { name: '15-Flash', universe: 'DC' },
+        { name: '16-Spider-man', universe: 'Marvel'},
+        { name: '17-Martian Manhunter', universe: 'DC' },
+        { name: '18-Nightwing', universe: 'DC' },
+        { name: '19-Raven', universe: 'DC' },
+        { name: '20-Hulk', universe: 'Marvel'},
+        { name: '21-hehulk', universe: 'Marvel'},
+        { name: '22-heeseung', universe: 'DC'},
+        { name: '23-hyejin', universe: 'Marvel'},
+        { name: '24-Black Panther', universe: 'Marvel'},
+        { name: '25-Beast Boy', universe: 'DC' },
+        { name: '26-Captain America', universe: 'Marvel'},
+        { name: '27-Hawk girl', universe: 'DC' },
       ],
+      limitOrderList: [],
       showList: [],
       limit: 5,
-      num: 1
+      num: 0
     }
   },
   component: {
-    // pagination,
+    pagination,
   },
-  created() {
-    this.showList = this.orderList.slice(0, 5)
-  },
-  methods: {
-    nextPage() {
-      this.showList = []
-      this.num += 1
-      this.showList = this.orderList.slice(0, (5 * this.num))
-    }
-  }
 }
 </script>
