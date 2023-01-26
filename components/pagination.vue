@@ -53,8 +53,8 @@ export default {
   },
   computed: {
     pageCount() { // 화면에 보이는 버튼 숫자 출력
-      // pageCount 는 length 가 5인 배열이 되어야함
-      // 현재 페이지가 마지막 버튼(5의 배수)이라면
+      // pageCount 는 length 가 btnLimitLength인 배열이 되어야함
+      // 현재 페이지가 마지막 버튼(btnLimitLength 의 배수)이라면
       // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
       const numList = Array(this.btnLength).fill().map((item, index) => {
         return index

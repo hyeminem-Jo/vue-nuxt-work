@@ -17,9 +17,7 @@
 export default {
   async asyncData({ $axios }) {
     const response = await $axios.get(`magazine?page=0&size=20`);
-    // const response = await axios.get(`magazine?page=0&size=20`);
     const list = response.data.data.content;
-    // console.log(typeof list)
     // console.log('baseURL: '+ process.env.BASE_URL)
     return { list }
   }

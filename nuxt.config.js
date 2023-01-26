@@ -4,8 +4,8 @@ export default {
   axios: {
     baseURL: 'http://devapi.emotion.co.kr/api/v1/',
     browserBaseURL: '/api/v1/',
-    // csr 을 했다가 ssr을 했다가 하기 때문
     // 새로고침 시 뜨고(ssr) 뒤로가기나 링크를 클릭을 할 땐 안뜸(csr)
+    // csr 을 했다가 ssr을 했다가 하기 때문
     proxy: true,
   },
   proxy: {
@@ -59,4 +59,7 @@ export default {
   env: {
     baseUrl: process.env.BASE_URL || 'http://devapi.emotion.co.kr'
   },
+
+  serverMiddleware: ['~/api/index.js']
+  // /api 폴더에 있는 index.js 을 이용하여 미들웨어를 구축하겠다는 선언
 }

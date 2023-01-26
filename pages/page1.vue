@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <div id="pagination">
       <h1>Pagination</h1>
@@ -62,4 +62,4 @@ export default {
     pagination,
   },
 }
-</script>
+</script> -->
