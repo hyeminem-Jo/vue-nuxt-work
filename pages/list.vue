@@ -15,11 +15,20 @@
 // import axios from 'axios';
 
 export default {
-  async asyncData({ $axios }) {
-    const response = await $axios.get(`magazine?page=0&size=20`);
-    const list = response.data.data.content;
-    // console.log('baseURL: '+ process.env.BASE_URL)
-    return { list }
+  // async asyncData({ $axios }) {
+  //   const response = await $axios.get(`magazine?page=0&size=20`);
+  //   const list = response.data.data.content;
+  //   // console.log('baseURL: '+ process.env.BASE_URL)
+  //   return { list }
+  // },
+  data() {
+    return {
+      list: []
+    }
+  },
+  async fetch() {
+    const response = await this.$axios.get(`magazine?page=0&size=20`);
+    this.list = response.data.data.content
   }
 }
 </script>
