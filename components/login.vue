@@ -64,7 +64,7 @@ export default {
         // const response = this.failure
         if (response.code === "SUC001") {
           this.response = response
-          // this.$store.state.userData = response.data;
+          this.$store.commit('setUser', response.data)
           console.log(this.$store)
           console.log('폼 제출 성공')
         } else if ( response.code === 'ERR_LOGIN_001') {

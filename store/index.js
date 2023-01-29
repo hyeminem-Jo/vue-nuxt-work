@@ -1,9 +1,11 @@
 export const state = () => ({
-  userData: {},
-}); 
-  
-// export const mutations = { 
-//   increment (state) { 
-//     state.counter++; 
-//   } 
-// }
+  user: {}
+})
+
+export const mutations = {
+  setUser(state, user) {
+    state.user = user;
+  }
+}
+
+// export const actions = {}
