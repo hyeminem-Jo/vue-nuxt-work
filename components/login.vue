@@ -58,34 +58,37 @@ export default {
     async submitForm() {
       try {
         // 서버 요청 에러 때문에 잠시 setTimeout 으로 비동기를 구현하여 더미테스트를 진행. (이때 setTimeout 은 Promise 를 반환하지 않기 때문에 async await 를 써도 동기적으로 굴러가지 않아 임의로 Promise 를 반환하게 해주었다.)
-        const wait = (delay) => new Promise(resolve => setTimeout(resolve, delay))
-        await wait(1000)
-        const response = this.success
-        // const response = this.failure
-        if (response.code === "SUC001") {
-          this.response = response
-          this.$store.commit('setUser', response.data)
-          console.log(this.$store)
-          console.log('폼 제출 성공')
-        } else if ( response.code === 'ERR_LOGIN_001') {
-          alert('회원정보가 일치하지 않습니다')
-        }
-        // const response = await this.$axios.$post('login', 
-        // {
-        //   deviceInfo: {
-        //     appPushValue: "app push key data",
-        //     appVersion: "1.0.0",
-        //     deviceMarketingNo: "app marketing unique number",
-        //     modelName: "SM-N981N",
-        //     osSectionCd: "iOS",
-        //     osVersion: 11
-        //   },
-        //   id: this.username,
-        //   password: this.password,
-        //   dormancyResetYn: false
-        // }, {
-        //   withCredentials: true,
-        // }) 
+        // const wait = (delay) => new Promise(resolve => setTimeout(resolve, delay))
+        // await wait(1000)
+        // const response = this.success
+        // // const response = this.failure
+        // if (response.code === "SUC001") {
+        //   this.response = response
+        //   this.$store.commit('setUser', response.data)
+        //   this.$router.push('/my-page')
+        //   console.log(this.$store.state.user)
+        //   console.log('폼 제출 성공')
+        // } else if ( response.code === 'ERR_LOGIN_001') {
+        //   alert('회원정보가 일치하지 않습니다')
+        // }
+        const response = await this.$axios.$post('login', 
+        {
+          deviceInfo: {
+            appPushValue: "app push key data",
+            appVersion: "1.0.0",
+            deviceMarketingNo: "app marketing unique number",
+            modelName: "SM-N981N",
+            osSectionCd: "iOS",
+            osVersion: 11
+          },
+          id: this.username,
+          password: this.password,
+          dormancyResetYn: false
+        }, {
+          withCredentials: true,
+        })
+        this.response = response
+        console.log(response)
       } catch (e) {
         console.log('폼 제출 실패', e)
       } finally {

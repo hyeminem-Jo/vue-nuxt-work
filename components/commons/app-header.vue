@@ -3,7 +3,7 @@
     <li>
       <nuxt-link to="/">홈</nuxt-link>
     </li>
-    <li>
+    <li @click="auth">
       <nuxt-link to="/my-page">마이페이지</nuxt-link>
     </li>
     <li>
@@ -14,7 +14,15 @@
 
 <script>
 export default {
-  name: 'AppHeader'
+  name: 'AppHeader',
+  methods: {
+    auth() {
+      if (!this.$store.state.user.accessToken) {
+        alert('로그인 후 이용 가능합니다.')
+        this.$router.push('/')
+      }
+    }
+  }
 }
 </script>
 
