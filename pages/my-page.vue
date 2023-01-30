@@ -14,6 +14,11 @@ export default {
     return {
       userData: this.$store.state.user
     }
+  },
+  created() {
+    if(!this.userData.id) {
+      this.$router.push('/')
+    }
   }
 }
 </script>
