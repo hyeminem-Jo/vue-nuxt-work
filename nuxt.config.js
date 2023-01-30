@@ -1,16 +1,16 @@
 export default {
+  server: { port: 8080 }, // 백엔드에서 허용해준 로컬 호스트 포트번호 8080 으로 바꿈으로써 403 에러 해결
   axios: {
+    proxy: true,
     baseURL: process.env.BASE_URL, 
     browserBaseURL: process.env.BROUSER_BASE_URL,
-    proxy: true,
-    // credenital: true,
+    credenital: true,
   },
   proxy: {
     '/api/': {
-      // target: 'https://dev-api.meta-point.co.kr',
-      // pathRewrite: { '^/api:': ''},
-      target: process.env.BASE_URL,
-      // prependPath: false,
+      target: 'https://dev-api.meta-point.co.kr',
+      pathRewrite: { '^/api:': ''},
+      // target: process.env.BASE_URL,
       changeOrigin: true
     }
   },
