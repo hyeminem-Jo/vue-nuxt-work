@@ -75,7 +75,6 @@ export default {
           this.$nuxt.$cookies.set('refreshToken', response.data.accessToken)
 
           console.log(response)
-          console.log(this.$store.state.user)
           console.log('폼 제출 성공')
         } else if ( response.code === 'ERR_LOGIN_001') { // 안됨
           console.log('회원정보 불일치',response)

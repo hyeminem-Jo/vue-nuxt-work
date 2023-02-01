@@ -9,11 +9,8 @@
     <li>
       <nuxt-link to="/notice">공지사항</nuxt-link>
     </li>
-    <li>
-      <button>
-        <nuxt-link to="/login">로그인</nuxt-link>
-      </button>
-      <button type="button">로그아웃</button>
+    <li v-if="userData?.id">
+      <span>{{ userData?.id }}님</span>
     </li>
   </ul>
 </template>
@@ -23,7 +20,7 @@ export default {
   name: 'AppHeader',
   data() {
     return {
-      // userData: this.$store.state.user
+      userData: this?.$store?.state?.user
     }
   },
   created() {
@@ -71,7 +68,7 @@ a {
 
       button {
         height: 30px;
-        margin-right: 15px;
+        margin-left: 15px;
       }
     }
   }

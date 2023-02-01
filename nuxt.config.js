@@ -1,5 +1,5 @@
 export default {
-  server: { port: 8080 }, // 백엔드에서 허용해준 로컬 호스트 포트번호 8080 으로 바꿈으로써 403 에러 해결
+  server: { port: 8080 },
   axios: {
     proxy: true,
     baseURL: process.env.BASE_URL, 
@@ -55,7 +55,6 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
     'cookie-universal-nuxt',
-    ['cookie-universal-nuxt', { alias: 'cookiz' }],
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

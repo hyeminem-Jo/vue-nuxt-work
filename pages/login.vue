@@ -15,8 +15,8 @@ import Login from '../components/login-form.vue'
 
 export default {
   name: 'Home',
-  // middleware: ['authenticated'],
   components: { Login },
+  middleware: ['authenticated'],
   data() {
     return {
       userData: this.$store.state.user
