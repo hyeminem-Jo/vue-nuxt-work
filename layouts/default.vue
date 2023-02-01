@@ -9,7 +9,10 @@
 import AppHeader from '../components/commons/app-header.vue'
 
 export default {
-components: { AppHeader }
+  components: { AppHeader },
+  created() {
+    console.log('default')
+  }
 }
 </script>
 

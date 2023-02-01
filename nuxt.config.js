@@ -47,10 +47,15 @@ export default {
     '@nuxtjs/dotenv'
   ],
 
+  ssr: true,
+  target: 'server',
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    'cookie-universal-nuxt',
+    ['cookie-universal-nuxt', { alias: 'cookiz' }],
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

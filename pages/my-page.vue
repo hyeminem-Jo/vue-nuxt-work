@@ -16,8 +16,10 @@ export default {
     }
   },
   created() {
+    console.log('ddd')
     if(!this.userData.id) {
-      this.$router.push('/')
+      alert('로그인 후 이용 가능합니다.')
+      this.$router.push('/login')
     }
   }
 }

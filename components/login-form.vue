@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>로그인</h2>
     <form @submit.prevent="submitForm">
       <div class="feild">
         <label for="username">id: </label>
@@ -44,28 +43,10 @@ export default {
     }
   },
   methods: {
-    errorTest () {
-
-    },
     async submitForm() {
       try {
-        // 서버 요청 에러 때문에 잠시 setTimeout 으로 비동기를 구현하여 더미테스트를 진행. (이때 setTimeout 은 Promise 를 반환하지 않기 때문에 async await 를 써도 동기적으로 굴러가지 않아 임의로 Promise 를 반환하게 해주었다.)
-        // const wait = (delay) => new Promise(resolve => setTimeout(resolve, delay))
-        // await wait(1000)
-        // const response = this.success
-        // // const response = this.failure
-        // if (response.code === "SUC001") {
-        //   this.response = response
-        //   this.$store.commit('setUser', response.data)
-        //   this.$router.push('/my-page')
-        //   console.log(this.$store.state.user)
-        //   console.log('폼 제출 성공')
-        // } else if ( response.code === 'ERR_LOGIN_001') {
-        //   alert('회원정보가 일치하지 않습니다')
-        // }
-
-        // 백엔드에서 허용해준 로컬 호스트 포트번호 8080 으로 바꿈으로써 403 에러 해결
-        const headers = { // post 요청할 때 인자로 header 를 안넣어서 503 에러 발생
+        // 백엔드에서 허용해준 로컬 호스트 포트번호 8080 으로 바꿈 => 403 에러 해결
+        const headers = { // post 요청할 때 인자로 header 를 넣지 않아 503 에러 발생
         'Client-App-Version': '1.1.0'
         }
         const response = await this.$axios.$post('/login', 
@@ -83,16 +64,20 @@ export default {
           dormancyResetYn: false
         }, {
           withCredentials: true,
-          // withCredentials: 다른 도메인(Cross Origin)에 요청을 보낼 때 요청에 인증(credential) 정보를 담아서 보낼 지를 결정하는 항목
+          // withCredentials: 다른 도메인(Cross Origin)에 요청을 보낼 때 요청에 인증(credential) 정보를 담아서 보낼지 결정하는 항목
           headers
         })
         if (response.code === "SUC001") {
           this.$store.commit('setUser', response.data)
           this.$router.push('/my-page')
+          
+          // document.cookie = `refreshToken = ${response.data.accessToken}`
+          this.$nuxt.$cookies.set('refreshToken', response.data.accessToken)
+
           console.log(response)
           console.log(this.$store.state.user)
           console.log('폼 제출 성공')
-        } else if ( response.code === 'ERR_LOGIN_001') {
+        } else if ( response.code === 'ERR_LOGIN_001') { // 안됨
           console.log('회원정보 불일치',response)
           alert('가입되지 않은 아이디입니다.')
         }
