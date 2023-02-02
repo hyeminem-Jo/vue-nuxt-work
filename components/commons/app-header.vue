@@ -9,27 +9,24 @@
     <li>
       <nuxt-link to="/notice">공지사항</nuxt-link>
     </li>
-    <li v-if="userData?.id">
-      <span>{{ userData?.id }}님</span>
+    <li v-if="user?.id">
+      <span>{{ user?.id }} 님</span>
     </li>
   </ul>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
   name: 'AppHeader',
-  data() {
-    return {
-      userData: this?.$store?.state?.user
-    }
-  },
-  created() {
-    // console.log('app-header', this.$store.state.user)
+  computed: {
+    ...mapState(['user'])
+    // userData() {
+      // return this.$store.state.user
+    // }
   },
 }
 </script>
-
-'_ga=GA1.1.1267205767.1667178356; _ga_JH4MPMHKXG=GS1.1.1669871581.2.1.1669871623.0.0.0; _ga_0G4PEML5S7=GS1.1.1669871624.4.1.1669874538.0.0.0; _ga_BK1GQ1XDFQ=GS1.1.1674086692.80.0.1674086696.0.0.0; SCOUTER=x4qu2rqgtadof8'
 
 <style lang="scss">
 a {

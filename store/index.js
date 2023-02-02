@@ -1,13 +1,27 @@
 export const state = () => ({
-  user: {}
+  user: null
 })
 
 export const mutations = {
   setUser(state, user) {
     state.user = user;
   },
-
-  logout(state) {
-    state.user = {};
-  }
 }
+
+// export const actions = {
+//   nuxtServerInit ({commit}, {req}) {
+//     console.log(req)
+//   },
+//   async login ({commit}, {username, password}) {
+//     try {
+//       const data = this.$axios.$post('/login', {username, password})
+//       commit('SET_USER', data)
+//     } catch (err) {
+//       throw err
+//     }
+//   },
+//   async logout ({commit}) {
+//     this.$axios.post('/logout')
+//     commit('SET_USER', null)
+//   }
+// }
