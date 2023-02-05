@@ -8,6 +8,25 @@ export const mutations = {
   },
 }
 
+export const actions = {
+  nuxtServerInit({ commit , state }, { req }) {
+    // cookie-universal-nuxt 로 cookies parse 하기
+    const token = this.$cookies.get('refreshToken')
+
+   // Check if Cookie user and token exists to set them in 'auth'
+    if (token) {
+      console.log('success',token);
+      console.log('data', state.user);
+      commit('setUser')
+    }
+    // if (token && state.user) {
+    //   commit('auth/SET_TOKEN', token)
+    //   commit('auth/SET_SESSION_TYPE', user)
+    // }
+  }
+}
+
+
 // export const actions = {
 //   nuxtServerInit ({commit}, {req}) {
 //     console.log(req)

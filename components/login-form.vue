@@ -55,7 +55,7 @@ export default {
           this.$router.push('/my-page')
           
           // document.cookie = `refreshToken = ${response.data.accessToken}`
-          this.$nuxt.$cookies.set('refreshToken', response.data.accessToken)
+          this.$cookies.set('refreshToken', response.data.accessToken)
 
           console.log(response)
           console.log('폼 제출 성공')

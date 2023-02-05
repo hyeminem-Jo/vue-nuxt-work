@@ -18,8 +18,8 @@ export default {
   middleware({ store, redirect }) {
     // 유저가 인증 받지 못한 경우 로그인 페이지로 이동
     if (!store.state.user?.accessToken) {
-      // 서버에서는 alert가 없기 때문에 undefined 가 뜨기 때문에 조건문으로 감싸기
-      if (typeof window !== 'undefined') { 
+      // 서버에는 alert가 없기 때문에 undefined 가 뜨기 때문에 조건문으로 감싸기
+      if (typeof window !== 'undefined') {
           alert('로그인 후 이용 가능합니다.') 
       }
       console.log('mypage-midd')
