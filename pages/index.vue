@@ -27,7 +27,7 @@ export default {
     logout() {
       console.log('logout')
       this.$store.commit('setUser', null)
-      this.$nuxt.$cookies.remove('refreshToken')
+      this.$cookies.remove('refreshToken')
     }
   }
 }

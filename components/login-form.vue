@@ -53,12 +53,10 @@ export default {
         if (response.code === "SUC001") {
           this.$store.commit('setUser', response.data)
           this.$router.push('/my-page')
-          
           // document.cookie = `refreshToken = ${response.data.accessToken}`
-          this.$nuxt.$cookies.set('refreshToken', response.data.accessToken)
-
-          console.log(response)
+          this.$cookies.set('refreshToken', response.data.accessToken)
           console.log('폼 제출 성공')
+          console.log(response)
         } else if ( response.code === 'ERR_LOGIN_001') { // 안됨
           console.log('회원정보 불일치',response)
           alert('가입되지 않은 아이디입니다.')
