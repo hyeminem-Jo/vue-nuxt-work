@@ -8,6 +8,18 @@ export const mutations = {
   },
 }
 
+export const actions = {
+  // nuxtServerInit 의 params: (Store Context, Nuxt Context)
+  // Store Context: 정보에 접근할 수 있는 객체
+  // Nuxt Context: 정보가 담긴 객체
+  nuxtServerInit(Store, nuxtContext) {
+    console.log('Store',Store, '<<<<nuxtContext>>>>', nuxtContext.req.headers)
+  }
+  // nuxtServerInit(_, { req }) {
+  //   console.log('req.headers.cookie',typeof req.headers.cookie)
+  // }
+}
+
 // export const actions = {
 //   nuxtServerInit ({commit}, {req}) {
 //     console.log(req)

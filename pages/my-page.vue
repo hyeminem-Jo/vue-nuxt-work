@@ -14,7 +14,7 @@ import { mapState } from 'vuex';
 export default {
   name: 'MyPage',
   // middelware: 페이지를 렌더링(생성)하기 전에 실행 
-  // created 으로 하면 페이지가 생성된 후 실행되기 때문에 middleware 쓰기
+  // created 으로 하면 페이지가 생성된 후 실행
   middleware({ store, redirect }) {
     // 유저가 인증 받지 못한 경우 로그인 페이지로 이동
     if (!store.state.user?.accessToken) {
